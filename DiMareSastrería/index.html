@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Di Mare Sastrería - Elegancia a Medida</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@400;500;600;700&family=Allura&family=Libre+Bodoni&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Brush Script MT';
+            src: url('fonts/BrushScriptMT.woff2') format('woff2'),
+                 url('fonts/BrushScriptMT.woff') format('woff'),
+                 url('fonts/BrushScriptMT.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Libre Bodoni';
+            src: url('fonts/LibreBodoni.woff2') format('woff2'),
+                 url('fonts/LibreBodoni.woff') format('woff'),
+                 url('fonts/LibreBodoni.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -42,6 +62,39 @@
             font-weight: 400;
             color: #000000;
             font-style: italic;
+            white-space: nowrap;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #000000;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .nav-links.mobile-open {
+            display: flex !important;
+            flex-direction: column;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .nav-links.mobile-open li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .nav-links {
@@ -98,7 +151,8 @@
         .hero-section {
             background-image: url('images/DSC02018.jpg');
             background-size: cover;
-            background-position: center;
+            background-repeat: no-repeat;
+            background-position: center center;
         }
 
         .hero-section::before {
@@ -156,20 +210,21 @@
             display: flex;
             gap: 1.5rem;
             z-index: 2;
-            margin-bottom: 20rem;
+            margin-bottom: 12rem;
         }
 
         .cta-button {
             background: #ffffff;
             color: #000000;
-            padding: 1.2rem 3rem;
-            font-size: 1.3rem;
+            padding: 0.6rem 1.8rem;
+            font-size: 0.95rem;
             font-style: italic;
             border: 2px solid #ffffff;
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             z-index: 1;
@@ -184,27 +239,28 @@
 
         .sitemap {
             position: absolute;
-            bottom: 0;
+            bottom: 2rem;
             left: 0;
             right: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
-            padding: 2rem 3rem;
+            padding: 1rem 2rem;
             z-index: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            align-items: flex-start;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 0.6rem 1.5rem;
             backdrop-filter: blur(10px);
         }
 
         .sitemap-link {
             color: #000000;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-style: italic;
             cursor: pointer;
             transition: all 0.3s;
             border-bottom: 1px solid transparent;
+            text-align: left;
         }
 
         .sitemap-link:hover {
@@ -214,14 +270,14 @@
 
         .footer-credit {
             position: absolute;
-            bottom: 1rem;
+            bottom: 0.3rem;
             left: 0;
             right: 0;
             text-align: center;
             color: #cccccc;
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             font-style: italic;
-            z-index: 1;
+            z-index: 0;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
@@ -254,11 +310,12 @@
         }
 
         .historia-text {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.4);
             padding: 3rem;
-            border: 2px solid #000000;
+            border: 2px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             margin-top: 2rem;
+            backdrop-filter: blur(5px);
         }
 
         .historia-text p {
@@ -507,19 +564,17 @@
             right: 0;
             bottom: 0;
             background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,0,0,0.02) 20px, rgba(0,0,0,0.02) 40px);
+            display: none;
         }
 
         .gallery-item:hover {
             border-color: #000000;
-            transform: scale(1.02);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .gallery-item::after {
-            content: 'Próximamente';
-            font-size: 1.3rem;
-            color: #333333;
-            z-index: 1;
+            display: none;
         }
 
         /* Form Section */
@@ -688,35 +743,37 @@
 <body>
     <nav class="nav-menu">
         <div class="nav-logo">Di Mare</div>
-        <ul class="nav-links" style="display: flex !important; gap: 1.2rem; list-style: none; margin: 0; padding: 0;">
-            <li class="active" onclick="showSection('inicio')" style="color: #000000;">Inicio</li>
-            <li onclick="showSection('historia')" style="color: #000000;">Historia</li>
-            <li onclick="showSection('servicios')" style="color: #000000;">Servicios</li>
-            <li onclick="showSection('proceso')" style="color: #000000;">Proceso</li>
-            <li onclick="showSection('coleccion')" style="color: #000000;">Colección</li>
-            <li onclick="showSection('cita')" style="color: #000000;">Solicitar Cita</li>
-            <li onclick="showSection('contacto')" style="color: #000000;">Contacto</li>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+            <span id="menu-icon">☰</span>
+        </button>
+        <ul class="nav-links" id="nav-links" style="display: flex !important; gap: 1.2rem; list-style: none; margin: 0; padding: 0;">
+            <li class="active" onclick="showSection('inicio'); closeMobileMenu();" style="color: #000000;">Home</li>
+            <li onclick="showSection('historia'); closeMobileMenu();" style="color: #000000;">About Us</li>
+            <li onclick="showSection('servicios'); closeMobileMenu();" style="color: #000000;">Services</li>
+            <li onclick="showSection('proceso'); closeMobileMenu();" style="color: #000000;">Process</li>
+            <li onclick="showSection('coleccion'); closeMobileMenu();" style="color: #000000;">Collection</li>
+            <li onclick="showSection('cita'); closeMobileMenu();" style="color: #000000;">Book Appointment</li>
+            <li onclick="showSection('contacto'); closeMobileMenu();" style="color: #000000;">Contact</li>
         </ul>
     </nav>
 
     <div id="inicio" class="section-container active">
         <div class="section-content hero-section">
             <div class="logo-container">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Cellipse cx='100' cy='50' rx='95' ry='45' fill='none' stroke='%23ffffff' stroke-width='2'/%3E%3Ctext x='100' y='48' font-family='Brush Script MT, cursive' font-size='34' fill='%23ffffff' text-anchor='middle' font-style='italic'%3EDi Mare%3C/text%3E%3Ctext x='100' y='72' font-family='Georgia, Times New Roman, serif' font-size='18' fill='%23ffffff' text-anchor='middle'%3E1948%3C/text%3E%3C/svg%3E" alt="Di Mare Logo" class="logo-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3Cellipse cx='100' cy='50' rx='76' ry='36' fill='none' stroke='%23ffffff' stroke-width='2'/%3E%3Ctext x='100' y='48' font-family='Brush Script MT, cursive' font-size='34' fill='%23ffffff' text-anchor='middle' font-style='italic'%3EDi Mare%3C/text%3E%3Ctext x='100' y='70' font-family='Libre Bodoni, Georgia, serif' font-size='16' fill='%23ffffff' text-anchor='middle'%3E1948%3C/text%3E%3C/svg%3E" alt="Di Mare Logo" class="logo-image">
             </div>
             <div class="button-group">
-                <button class="cta-button" onclick="showSection('contacto')">Contactar</button>
-                <button class="cta-button" onclick="showSection('coleccion')">Colección</button>
+                <button class="cta-button" onclick="showSection('contacto')">Contact Us</button>
             </div>
             <div class="sitemap">
-                <span class="sitemap-link" onclick="showSection('historia')">Historia</span>
-                <span class="sitemap-link" onclick="showSection('servicios')">Servicios</span>
-                <span class="sitemap-link" onclick="showSection('proceso')">Proceso</span>
-                <span class="sitemap-link" onclick="showSection('coleccion')">Colección</span>
-                <span class="sitemap-link" onclick="showSection('cita')">Solicitar Cita</span>
-                <span class="sitemap-link" onclick="showSection('contacto')">Contacto</span>
+                <span class="sitemap-link" onclick="showSection('historia')">About Us</span>
+                <span class="sitemap-link" onclick="showSection('servicios')">Services</span>
+                <span class="sitemap-link" onclick="showSection('proceso')">Process</span>
+                <span class="sitemap-link" onclick="showSection('coleccion')">Collection</span>
+                <span class="sitemap-link" onclick="showSection('cita')">Book Appointment</span>
+                <span class="sitemap-link" onclick="showSection('contacto')">Contact</span>
             </div>
-            <div class="footer-credit">Sitio Web elaborado por Webpatodos</div>
+            <div class="footer-credit">Website by Webpatodos</div>
         </div>
     </div>
 
@@ -724,11 +781,11 @@
         <div class="section-content historia-section">
             <div class="historia-overlay"></div>
             <div class="historia-content">
-                <h2 class="section-title" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Historia</h2>
+                <h2 class="section-title" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About Us</h2>
                 <div class="historia-text">
-                    <p>Di Mare Sastrería nació en Calabria, Italia, en 1948. En medio del caos de la II Guerra Mundial, mi familia llegó a Costa Rica como refugiada, trayendo consigo hilo, aguja y la determinación de empezar de nuevo.</p>
-                    <p>Cosiendo uniformes militares, tejieron también un nuevo hogar.</p>
-                    <p>Hoy, esta sastrería es un tributo a esa herencia, a los valores que me definen, y a la elegancia atemporal del oficio.</p>
+                    <p>Di Mare Tailoring was born in Calabria, Italy, in 1948. In the aftermath of World War II, my family arrived in Costa Rica as refugees, bringing with them thread, needle, and the determination to begin anew.</p>
+                    <p>While sewing military uniforms, they also wove a new home.</p>
+                    <p>Today, this tailoring house is a tribute to that heritage, to the values that define me, and to the timeless elegance of the craft.</p>
                 </div>
             </div>
         </div>
@@ -736,23 +793,23 @@
 
     <div id="servicios" class="section-container">
         <div class="section-content services-section">
-            <h2 class="section-title">Nuestros Servicios</h2>
+            <h2 class="section-title">Our Services</h2>
             <div class="service-grid">
                 <div class="service-card">
-                    <h3>Trajes a Medida</h3>
-                    <p>Confección personalizada de trajes que reflejan tu estilo único y personalidad.</p>
+                    <h3>Bespoke Suits</h3>
+                    <p>Custom tailoring of suits that reflect your unique style and personality.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Vestidos de Gala</h3>
-                    <p>Creaciones exclusivas para ocasiones especiales que te harán brillar.</p>
+                    <h3>Evening Gowns</h3>
+                    <p>Exclusive creations for special occasions that will make you shine.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Ajustes y Arreglos</h3>
-                    <p>Perfeccionamos cada prenda con precisión y cuidado artesanal.</p>
+                    <h3>Alterations & Adjustments</h3>
+                    <p>We perfect every garment with precision and artisan care.</p>
                 </div>
                 <div class="service-card">
-                    <h3>Consultoría de Estilo</h3>
-                    <p>Asesoramiento personalizado para encontrar el look perfecto.</p>
+                    <h3>Style Consultation</h3>
+                    <p>Personalized advice to find the perfect look for you.</p>
                 </div>
             </div>
         </div>
@@ -760,51 +817,51 @@
 
     <div id="proceso" class="section-container">
         <div class="section-content process-section">
-            <h2 class="section-title">Nuestro Proceso</h2>
+            <h2 class="section-title">Our Process</h2>
             <p style="text-align: center; font-size: 1.2rem; font-style: italic; color: #555555; margin-bottom: 3rem; max-width: 700px; z-index: 1;">
-                Cada creación es un viaje meticuloso desde la consulta inicial hasta la prenda perfecta.
+                Each creation is a meticulous journey from the initial consultation to the perfect garment.
             </p>
             <div class="process-timeline">
                 <div class="process-step">
                     <div class="step-number">01</div>
                     <div class="step-content">
-                        <h3>Consulta Inicial</h3>
-                        <p>Conocemos tus necesidades, estilo y visión.</p>
+                        <h3>Initial Consultation</h3>
+                        <p>We get to know your needs, style, and vision.</p>
                     </div>
                 </div>
                 <div class="process-step">
                     <div class="step-number">02</div>
                     <div class="step-content">
-                        <h3>Toma de Medidas</h3>
-                        <p>Mediciones precisas para un ajuste perfecto.</p>
+                        <h3>Taking Measurements</h3>
+                        <p>Precise measurements for a perfect fit.</p>
                     </div>
                 </div>
                 <div class="process-step">
                     <div class="step-number">03</div>
                     <div class="step-content">
-                        <h3>Diseño y Selección</h3>
-                        <p>Seleccionamos telas premium y detalles.</p>
+                        <h3>Design & Selection</h3>
+                        <p>We select premium fabrics and details together.</p>
                     </div>
                 </div>
                 <div class="process-step">
                     <div class="step-number">04</div>
                     <div class="step-content">
-                        <h3>Confección Preliminar</h3>
-                        <p>Trabajo dedicado en cada puntada.</p>
+                        <h3>Preliminary Construction</h3>
+                        <p>Dedicated work on every stitch.</p>
                     </div>
                 </div>
                 <div class="process-step">
                     <div class="step-number">05</div>
                     <div class="step-content">
-                        <h3>Prueba y Ajustes</h3>
-                        <p>Refinamiento para lograr la perfección.</p>
+                        <h3>Fitting & Adjustments</h3>
+                        <p>Refinement to achieve absolute perfection.</p>
                     </div>
                 </div>
                 <div class="process-step">
                     <div class="step-number">06</div>
                     <div class="step-content">
-                        <h3>Entrega Final</h3>
-                        <p>Tu creación única lista para brillar.</p>
+                        <h3>Final Delivery</h3>
+                        <p>Your unique creation is ready to shine.</p>
                     </div>
                 </div>
             </div>
@@ -813,66 +870,102 @@
 
     <div id="coleccion" class="section-container">
         <div class="section-content gallery-section">
-            <h2 class="section-title">Colección</h2>
+            <h2 class="section-title">Collection</h2>
             <div class="gallery-grid">
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
+                <div class="gallery-item">
+                    <img src="images/1.JPEG" alt="Di Mare Collection 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/2.JPEG" alt="Di Mare Collection 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/3.JPEG" alt="Di Mare Collection 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/4.JPEG" alt="Di Mare Collection 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/5.JPEG" alt="Di Mare Collection 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/6.JPEG" alt="Di Mare Collection 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/7.JPEG" alt="Di Mare Collection 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/8.JPEG" alt="Di Mare Collection 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/9.JPEG" alt="Di Mare Collection 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/10.JPEG" alt="Di Mare Collection 10">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/11.JPEG" alt="Di Mare Collection 11">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/12.JPEG" alt="Di Mare Collection 12">
+                </div>
             </div>
         </div>
     </div>
 
     <div id="cita" class="section-container">
         <div class="section-content form-section">
-            <h2 class="section-title">Solicita tu Cita</h2>
+            <h2 class="section-title">Book Your Appointment</h2>
             <p style="text-align: center; font-size: 1.2rem; font-style: italic; color: #555555; margin-bottom: 2rem; max-width: 600px; z-index: 1;">
-                Déjanos tus datos y nos pondremos en contacto contigo para coordinar tu consulta personalizada.
+                Leave us your details and we will contact you to schedule your personalized consultation.
             </p>
             <div class="form-container">
-                <div class="input-group">
-                    <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
-                <div class="input-group">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="input-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" required>
-                </div>
-                <div class="input-group">
-                    <label for="servicio">Servicio de interés</label>
-                    <select id="servicio" name="servicio" required>
-                        <option value="">Selecciona una opción</option>
-                        <option value="trajes">Trajes a Medida</option>
-                        <option value="vestidos">Vestidos de Gala</option>
-                        <option value="ajustes">Ajustes y Arreglos</option>
-                        <option value="consultoria">Consultoría de Estilo</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
-                </div>
-                <button type="button" class="submit-button" onclick="handleSubmit()">Enviar Solicitud</button>
+                <form action="https://formsubmit.co/dimaresastreria@outlook.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Appointment Request - Di Mare Tailoring">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    
+                    <div class="input-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="service">Service of Interest</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select an option</option>
+                            <option value="Bespoke Suits">Bespoke Suits</option>
+                            <option value="Evening Gowns">Evening Gowns</option>
+                            <option value="Alterations & Adjustments">Alterations & Adjustments</option>
+                            <option value="Style Consultation">Style Consultation</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Submit Request</button>
+                </form>
             </div>
         </div>
     </div>
 
     <div id="contacto" class="section-container">
         <div class="section-content contact-section">
-            <h2 class="section-title">Contacto</h2>
+            <h2 class="section-title">Contact</h2>
             <div class="contact-info">
                 <div class="contact-item">
-                    <div class="contact-label">Teléfono</div>
+                    <div class="contact-label">Phone</div>
                     <a href="tel:+50683362340">+506 8336 2340</a>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-label">Correo Electrónico</div>
+                    <div class="contact-label">Email</div>
                     <a href="mailto:dimaresastreria@outlook.com">dimaresastreria@outlook.com</a>
                 </div>
                 <div class="contact-item">
@@ -884,6 +977,28 @@
     </div>
 
     <script>
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('nav-links');
+            const menuIcon = document.getElementById('menu-icon');
+            
+            navLinks.classList.toggle('mobile-open');
+            
+            if (navLinks.classList.contains('mobile-open')) {
+                menuIcon.textContent = '✕';
+            } else {
+                menuIcon.textContent = '☰';
+            }
+        }
+
+        function closeMobileMenu() {
+            if (window.innerWidth <= 768) {
+                const navLinks = document.getElementById('nav-links');
+                const menuIcon = document.getElementById('menu-icon');
+                navLinks.classList.remove('mobile-open');
+                menuIcon.textContent = '☰';
+            }
+        }
+
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.section-container');
             const navItems = document.querySelectorAll('.nav-links li');
@@ -897,27 +1012,9 @@
             });
             
             document.getElementById(sectionId).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        function handleSubmit() {
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const telefono = document.getElementById('telefono').value;
-            const servicio = document.getElementById('servicio').value;
-
-            if (!nombre || !email || !telefono || !servicio) {
-                alert('Por favor completa todos los campos obligatorios.');
-                return;
+            if (event && event.target) {
+                event.target.classList.add('active');
             }
-
-            alert('¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.');
-            
-            document.getElementById('nombre').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('telefono').value = '';
-            document.getElementById('servicio').value = '';
-            document.getElementById('mensaje').value = '';
         }
     </script>
 </body>
